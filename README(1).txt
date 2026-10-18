@@ -1,0 +1,1 @@
+Read SETUP_GUIDE.md first. This is a Capacitor Android build scaffold, not an APK; Firebase configuration and cloud data migration/testing remain required.

@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en" class="dark"><head><base href="https://1088969103-atari-embeds.googleusercontent.com/embeds/222dfdb87d68a4d8ac094e2ab4a2ae3a/inner-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.gh7qIZtzO5w.O%2Fd%3D1%2Frs%3DAHpOoo84YKT1RVy0T6hcXi5rH3LooB1WCw%2Fm%3D__features__" target="_blank">
+      <script>
+        (function() {
+          // Listen during capturing phase to intercept before <base target="_blank"> takes effect.
+          document.addEventListener('click', function(e) {
+            // Find the nearest ancestor anchor (handles nested icons, spans, svgs).
+            var el = e.target;
+            var anchor = null;
+            while (el && el !== document) {
+              if (el.tagName && el.tagName.toLowerCase() === 'a') {
+                anchor = el;
+                break;
+              }
+              el = el.parentElement;
+            }
+            if (!anchor) return;
+
+            // Only intercept relative in-page fragment links, not external links with hashes.
+            var href = anchor.getAttribute('href');
+            if (!href) return;
+            href = href.trim();
+            if (!href.startsWith('#')) return;
+
+            // Prevent default <base target="_blank"> navigation to a new blank tab.
+            e.preventDefault();
+            e.stopPropagation();
+
+            // Handle empty anchor or top anchor.
+            if (href === '#' || href === '#top') {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              return;
+            }
+
+            // Resolve target element by id, falling back to legacy name attribute.
+            var targetId = href.slice(1);
+            try {
+              targetId = decodeURIComponent(targetId);
+            } catch (err) {}
+
+            var targetEl = document.getElementById(targetId);
+            if (!targetEl) {
+              try {
+                var escaped = window.CSS && CSS.escape ? CSS.escape(targetId) : targetId.replace(/["\\]/g, '\\$&');
+                targetEl = document.querySelector('[name="' + escaped + '"]');
+              } catch (err) {}
+            }
+
+            // Smoothly scroll to the target within the embed and update URL hash history.
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              if (window.history && window.history.pushState) {
+                window.history.pushState(null, '', href);
+              }
+            }
+          }, true); // useCapture: true is critical to preempt <base target="_blank">
+        })();
+      </script>
+    
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#090d16">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Devinda Space">
+    <title>DEVINDA EXTRA SPACE - 1TB Cloud Vault</title>
+    
+    <!-- Dynamic App Icons -->
+    <link rel="apple-touch-icon" id="appleTouchIcon" href="1000010730.png">
+    <link rel="icon" id="faviconIcon" href="1000010730.png" type="image/png">
+
+    <!-- Dynamic PWA Manifest -->
+    <link rel="manifest" id="manifestPlaceholder" href="blob:https://1088969103-atari-embeds.googleusercontent.com/770ef94a-7b8a-4c59-ab4f-e6510cf0cfc5">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- JSZip for exporting APK Bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            500: '#10b981',
+                            600: '#059669',
+                            dark: '#0f172a',
+                            card: 'rgba(30, 27, 75, 0.4)',
+                            accentBlue: '#38bdf8',
+                            accentViolet: '#a855f7',
+                            accentRose: '#f43f5e'
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s infinite alternate',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%': { boxShadow: '0 0 15px rgba(56, 189, 248, 0.3)' },
+                            '100%': { boxShadow: '0 0 30px rgba(168, 85, 247, 0.6)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #090d16 0%, #0f172a 40%, #1e1b4b 100%);
+            min-height: 100vh;
+            color: #f8fafc;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card {
+            background: rgba(30, 41, 59, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Animated Main Brand Title */
+        .brand-animated-title {
+            background: linear-gradient(-45deg, #38bdf8, #818cf8, #a855f7, #ec4899, #38bdf8);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 6s ease infinite, titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes titleGlow {
+            0% { filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.3)); }
+            100% { filter: drop-shadow(0 0 16px rgba(168, 85, 247, 0.8)); }
+        }
+
+        /* Powered by DEW Animated Signature */
+        .dew-badge {
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.85), rgba(15, 23, 42, 0.95));
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            box-shadow: 0 0 18px rgba(56, 189, 248, 0.25);
+            animation: badgePulse 4s infinite alternate;
+        }
+
+        @keyframes badgePulse {
+            0% { border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 0 12px rgba(56, 189, 248, 0.2); }
+            50% { border-color: rgba(168, 85, 247, 0.6); box-shadow: 0 0 22px rgba(168, 85, 247, 0.4); }
+            100% { border-color: rgba(244, 63, 94, 0.5); box-shadow: 0 0 16px rgba(244, 63, 94, 0.3); }
+        }
+
+        .gradient-btn {
+            background: linear-gradient(135deg, #059669 0%, #0284c7 100%);
+            transition: all 0.3s ease;
+        }
+        .gradient-btn:hover {
+            background: linear-gradient(135deg, #10b981 0%, #38bdf8 100%);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+        }
+
+        .apk-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            animation: pulseGlow 2.5s infinite alternate;
+        }
+
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.6); }
+        ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.3); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(56, 189, 248, 0.6); }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.-bottom-10{bottom:-2.5rem}.-right-10{right:-2.5rem}.bottom-6{bottom:1.5rem}.left-3{left:0.75rem}.right-5{right:1.25rem}.top-0{top:0px}.top-1\/2{top:50%}.z-10{z-index:10}.z-30{z-index:30}.z-40{z-index:40}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-4{margin-top:1rem;margin-bottom:1rem}.mb-1{margin-bottom:0.25rem}.mb-3{margin-bottom:0.75rem}.mr-1\.5{margin-right:0.375rem}.mr-2{margin-right:0.5rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-11{height:2.75rem}.h-12{height:3rem}.h-14{height:3.5rem}.h-16{height:4rem}.h-2{height:0.5rem}.h-3{height:0.75rem}.h-4{height:1rem}.h-40{height:10rem}.h-9{height:2.25rem}.h-full{height:100%}.max-h-full{max-height:100%}.w-11{width:2.75rem}.w-12{width:3rem}.w-14{width:3.5rem}.w-16{width:4rem}.w-2{width:0.5rem}.w-3{width:0.75rem}.w-40{width:10rem}.w-9{width:2.25rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-7xl{max-width:80rem}.max-w-full{max-width:100%}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.-translate-y-1\/2{--tw-translate-y:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes bounce{0%, 100%{transform:translateY(-25%);animation-timing-function:cubic-bezier(0.8,0,1,1)}50%{transform:none;animation-timing-function:cubic-bezier(0,0,0.2,1)}}.animate-bounce{animation:bounce 1s infinite}@keyframes float{0%, 100%{transform:translateY(0px)}50%{transform:translateY(-8px)}}.animate-float{animation:float 6s ease-in-out infinite}@keyframes ping{75%, 100%{transform:scale(2);opacity:0}}.animate-ping{animation:ping 1s cubic-bezier(0, 0, 0.2, 1) infinite}.cursor-pointer{cursor:pointer}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.items-stretch{align-items:stretch}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.space-x-1 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.25rem * var(--tw-space-x-reverse));margin-left:calc(0.25rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.375rem * var(--tw-space-x-reverse));margin-left:calc(0.375rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.rounded-l-full{border-top-left-radius:9999px;border-bottom-left-radius:9999px}.rounded-r-full{border-top-right-radius:9999px;border-bottom-right-radius:9999px}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-dashed{border-style:dashed}.border-emerald-400{--tw-border-opacity:1;border-color:rgb(52 211 153 / var(--tw-border-opacity, 1))}.border-emerald-500\/20{border-color:rgb(16 185 129 / 0.2)}.border-emerald-500\/30{border-color:rgb(16 185 129 / 0.3)}.border-emerald-500\/40{border-color:rgb(16 185 129 / 0.4)}.border-sky-400\/80{border-color:rgb(56 189 248 / 0.8)}.border-sky-500\/40{border-color:rgb(14 165 233 / 0.4)}.border-sky-700\/50{border-color:rgb(3 105 161 / 0.5)}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85 / var(--tw-border-opacity, 1))}.border-slate-700\/50{border-color:rgb(51 65 85 / 0.5)}.border-slate-700\/80{border-color:rgb(51 65 85 / 0.8)}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59 / var(--tw-border-opacity, 1))}.border-slate-800\/80{border-color:rgb(30 41 59 / 0.8)}.bg-black\/50{background-color:rgb(0 0 0 / 0.5)}.bg-black\/60{background-color:rgb(0 0 0 / 0.6)}.bg-black\/80{background-color:rgb(0 0 0 / 0.8)}.bg-black\/90{background-color:rgb(0 0 0 / 0.9)}.bg-emerald-400{--tw-bg-opacity:1;background-color:rgb(52 211 153 / var(--tw-bg-opacity, 1))}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.bg-emerald-500\/10{background-color:rgb(16 185 129 / 0.1)}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.bg-rose-500{--tw-bg-opacity:1;background-color:rgb(244 63 94 / var(--tw-bg-opacity, 1))}.bg-sky-500{--tw-bg-opacity:1;background-color:rgb(14 165 233 / var(--tw-bg-opacity, 1))}.bg-sky-950\/60{background-color:rgb(8 47 73 / 0.6)}.bg-slate-700{--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-slate-800\/80{background-color:rgb(30 41 59 / 0.8)}.bg-slate-800\/90{background-color:rgb(30 41 59 / 0.9)}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-slate-900\/40{background-color:rgb(15 23 42 / 0.4)}.bg-slate-900\/80{background-color:rgb(15 23 42 / 0.8)}.bg-violet-500{--tw-bg-opacity:1;background-color:rgb(139 92 246 / var(--tw-bg-opacity, 1))}.bg-violet-600\/20{background-color:rgb(124 58 237 / 0.2)}.object-contain{object-fit:contain}.object-cover{object-fit:cover}.p-0\.5{padding:0.125rem}.p-1{padding:0.25rem}.p-1\.5{padding:0.375rem}.p-12{padding:3rem}.p-2\.5{padding:0.625rem}.p-3{padding:0.75rem}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pb-2{padding-bottom:0.5rem}.pb-28{padding-bottom:7rem}.pl-9{padding-left:2.25rem}.pr-4{padding-right:1rem}.pt-1{padding-top:0.25rem}.pt-3{padding-top:0.75rem}.text-center{text-align:center}.text-right{text-align:right}.text-2xl{font-size:1.5rem;line-height:2rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[9px\]{font-size:9px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-none{line-height:1}.tracking-wider{letter-spacing:0.05em}.text-amber-300{--tw-text-opacity:1;color:rgb(252 211 77 / var(--tw-text-opacity, 1))}.text-amber-400{--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.text-emerald-300{--tw-text-opacity:1;color:rgb(110 231 183 / var(--tw-text-opacity, 1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-rose-400{--tw-text-opacity:1;color:rgb(251 113 133 / var(--tw-text-opacity, 1))}.text-sky-300{--tw-text-opacity:1;color:rgb(125 211 252 / var(--tw-text-opacity, 1))}.text-sky-400{--tw-text-opacity:1;color:rgb(56 189 248 / var(--tw-text-opacity, 1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-violet-400{--tw-text-opacity:1;color:rgb(167 139 250 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.opacity-0{opacity:0}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sky-500\/20{--tw-shadow-color:rgb(14 165 233 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.shadow-sky-500\/50{--tw-shadow-color:rgb(14 165 233 / 0.5);--tw-shadow:var(--tw-shadow-colored)}.blur-3xl{--tw-blur:blur(64px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-500{transition-duration:500ms}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-sky-500\/50:hover{border-color:rgb(14 165 233 / 0.5)}.hover\:bg-emerald-500:hover{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.hover\:bg-rose-600\/80:hover{background-color:rgb(225 29 72 / 0.8)}.hover\:bg-slate-700:hover{--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-700\/80:hover{background-color:rgb(51 65 85 / 0.8)}.hover\:bg-slate-800\/60:hover{background-color:rgb(30 41 59 / 0.6)}.hover\:text-rose-400:hover{--tw-text-opacity:1;color:rgb(251 113 133 / var(--tw-text-opacity, 1))}.hover\:text-sky-200:hover{--tw-text-opacity:1;color:rgb(186 230 253 / var(--tw-text-opacity, 1))}.hover\:text-sky-400:hover{--tw-text-opacity:1;color:rgb(56 189 248 / var(--tw-text-opacity, 1))}.hover\:text-slate-200:hover{--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.focus\:border-sky-500:focus{--tw-border-opacity:1;border-color:rgb(14 165 233 / var(--tw-border-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:opacity-100{opacity:1}@media (min-width: 640px){.sm\:inline{display:inline}.sm\:hidden{display:none}.sm\:h-16{height:4rem}.sm\:h-20{height:5rem}.sm\:w-16{width:4rem}.sm\:w-20{width:5rem}.sm\:w-64{width:16rem}.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.sm\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}.sm\:items-center{align-items:center}.sm\:gap-4{gap:1rem}.sm\:space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.sm\:p-6{padding:1.5rem}.sm\:p-8{padding:2rem}.sm\:px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.sm\:px-4{padding-left:1rem;padding-right:1rem}.sm\:px-8{padding-left:2rem;padding-right:2rem}.sm\:py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.sm\:text-right{text-align:right}.sm\:text-2xl{font-size:1.5rem;line-height:2rem}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}.sm\:text-xs{font-size:0.75rem;line-height:1rem}}@media (min-width: 768px){.md\:inline{display:inline}.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:items-center{align-items:center}.md\:pb-0{padding-bottom:0px}.md\:pb-12{padding-bottom:3rem}}@media (min-width: 1024px){.lg\:grid-cols-5{grid-template-columns:repeat(5, minmax(0, 1fr))}}</style></head>
+<body class="pb-28 md:pb-12">
+
+    <!-- Header Navigation Bar -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-4 py-3 sm:px-8">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div id="headerAppIconContainer" onclick="triggerAppIconUpload()" class="w-11 h-11 rounded-2xl border-2 border-sky-400/80 bg-slate-900 flex items-center justify-center shadow-lg shadow-sky-500/20 cursor-pointer overflow-hidden relative group">
+                    <img id="headerAppIconImg" src="https://cdn-icons-png.flaticon.com/512/4149/4149678.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/4149/4149678.png'" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                        <i class="fa-solid fa-camera text-white text-xs"></i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-base sm:text-2xl tracking-wider leading-none uppercase">
+                        <span class="brand-animated-title">DEVINDA EXTRA SPACE</span>
+                    </h1>
+                    <p class="text-[10px] sm:text-xs text-slate-400 mt-0.5">1TB Personal Media Drive</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <!-- Direct Install to Home Screen Button -->
+                <button onclick="installDirectToHomeScreen()" class="apk-btn px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white flex items-center space-x-2 shadow-lg hover:scale-105 active:scale-95 transition-all">
+                    <i class="fa-solid fa-mobile-screen-button text-amber-300 animate-bounce"></i>
+                    <span>Install App</span>
+                </button>
+
+                <!-- Download APK Project -->
+                <button onclick="downloadAPKProjectBundle()" class="bg-slate-800/90 hover:bg-slate-700/80 border border-emerald-500/40 text-emerald-300 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 transition-all">
+                    <i class="fa-brands fa-android text-emerald-400 text-sm"></i>
+                    <span class="hidden md:inline">Download APK</span>
+                </button>
+
+                <!-- Media Upload -->
+                <button onclick="triggerFileInput()" class="gradient-btn px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-white flex items-center space-x-2 shadow-md hover:scale-105 active:scale-95">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <span class="hidden sm:inline">Upload File</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hidden Input Files -->
+    <input type="file" id="appIconFileInput" accept="image/*" class="hidden" onchange="handleAppIconUpload(event)">
+    <input type="file" id="mediaFileInput" accept="image/*,video/*" multiple="" class="hidden" onchange="handleFileUpload(event)">
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-8 py-6 space-y-6">
+
+        <!-- Banner with Photo Icon & Installation Status -->
+        <div class="glass-panel rounded-2xl p-4 sm:p-6 border border-slate-700/50 relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-violet-600/20 rounded-full blur-3xl"></div>
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 relative z-10">
+                <div class="flex items-center space-x-4">
+                    <div onclick="triggerAppIconUpload()" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-slate-900 border-2 border-sky-400/80 shadow-xl flex items-center justify-center overflow-hidden cursor-pointer relative group shrink-0">
+                        <img id="bannerIconPreview" src="https://cdn-icons-png.flaticon.com/512/4149/4149678.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/4149/4149678.png'" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center text-white transition-opacity">
+                            <i class="fa-solid fa-camera text-base mb-1"></i>
+                            <span class="text-[9px] font-bold">Change</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inline-flex items-center space-x-2 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-1">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                            <span>1,024 GB (1 TB) Personal Drive Active</span>
+                        </div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-white">
+                            <span class="brand-animated-title">DEVINDA EXTRA SPACE</span>
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl">
+                            ඔබගේ Photo එක App Icon එක ලෙස සකසා ඇත. උඩ ඇති <b>"Install App"</b> බටන් එක Touch කළ සැණින් Home Screen එකට Add කරගත හැක!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="installDirectToHomeScreen()" class="text-xs text-white bg-emerald-600 hover:bg-emerald-500 px-3.5 py-2 rounded-xl font-bold flex items-center space-x-1.5 shadow-lg">
+                        <i class="fa-solid fa-bolt text-amber-300"></i>
+                        <span>Instant Home Add</span>
+                    </button>
+                    <button onclick="openAPKBuilderModal()" class="text-xs text-sky-300 hover:text-sky-200 bg-sky-950/60 border border-sky-700/50 px-3 py-2 rounded-xl flex items-center space-x-1.5">
+                        <i class="fa-brands fa-android text-emerald-400"></i>
+                        <span>APK Conversion Options</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1TB Storage Meter Dashboard -->
+        <div class="glass-panel rounded-2xl p-5 sm:p-6 space-y-5">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                    <h3 class="font-bold text-base sm:text-lg text-white flex items-center space-x-2">
+                        <i class="fa-solid fa-server text-sky-400"></i>
+                        <span>1TB Storage Status</span>
+                    </h3>
+                    <p class="text-xs text-slate-400">DEVINDA EXTRA SPACE Capacity Tracker</p>
+                </div>
+                <div class="text-right sm:text-right">
+                    <span id="storagePercentText" class="text-xl sm:text-2xl font-extrabold text-sky-400">0.0000%</span>
+                    <span class="text-xs text-slate-400 block sm:inline"> used of 1.00 TB</span>
+                </div>
+            </div>
+
+            <!-- Storage Visual Bar -->
+            <div class="w-full bg-slate-900/80 rounded-full h-4 p-0.5 border border-slate-800 overflow-hidden flex">
+                <div id="photosBar" class="bg-sky-500 h-full rounded-l-full transition-all duration-500" style="width: 0%" title="Photos"></div>
+                <div id="videosBar" class="bg-violet-500 h-full transition-all duration-500" style="width: 0%" title="Videos"></div>
+                <div id="systemBar" class="bg-slate-700 h-full rounded-r-full transition-all duration-500" style="width: 0.1%" title="System Space"></div>
+            </div>
+
+            <!-- Usage Breakdown -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs pt-1">
+                <div class="bg-slate-900/40 p-2.5 rounded-xl border border-slate-800 flex items-center space-x-3">
+                    <div class="w-3 h-3 rounded-full bg-sky-500 shrink-0"></div>
+                    <div>
+                        <p class="text-slate-400">Photos</p>
+                        <p id="photoUsageText" class="font-semibold text-slate-200">0 MB (0)</p>
+                    </div>
+                </div>
+                <div class="bg-slate-900/40 p-2.5 rounded-xl border border-slate-800 flex items-center space-x-3">
+                    <div class="w-3 h-3 rounded-full bg-violet-500 shrink-0"></div>
+                    <div>
+                        <p class="text-slate-400">Videos</p>
+                        <p id="videoUsageText" class="font-semibold text-slate-200">0 MB (0)</p>
+                    </div>
+                </div>
+                <div class="bg-slate-900/40 p-2.5 rounded-xl border border-slate-800 flex items-center space-x-3">
+                    <div class="w-3 h-3 rounded-full bg-emerald-500 shrink-0"></div>
+                    <div>
+                        <p class="text-slate-400">Free Space</p>
+                        <p id="freeSpaceText" class="font-semibold text-slate-200">1024.00 GB</p>
+                    </div>
+                </div>
+                <div class="bg-slate-900/40 p-2.5 rounded-xl border border-slate-800 flex items-center space-x-3">
+                    <div class="w-3 h-3 rounded-full bg-rose-500 shrink-0"></div>
+                    <div>
+                        <p class="text-slate-400">Total Items</p>
+                        <p id="totalCountText" class="font-semibold text-slate-200">0 items</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Media Filter Bar & Navigation -->
+        <div class="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+            <div class="flex items-center overflow-x-auto space-x-2 pb-2 md:pb-0 scrollbar-none">
+                <button onclick="setCategory('all')" id="tab-all" class="category-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-sky-500 text-white shadow-md shadow-sky-500/20 shrink-0">
+                    <i class="fa-solid fa-shapes mr-1.5"></i> All Media
+                </button>
+                <button onclick="setCategory('photos')" id="tab-photos" class="category-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white hover:bg-slate-800/60 shrink-0">
+                    <i class="fa-solid fa-image mr-1.5 text-sky-400"></i> Photos
+                </button>
+                <button onclick="setCategory('videos')" id="tab-videos" class="category-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white hover:bg-slate-800/60 shrink-0">
+                    <i class="fa-solid fa-video mr-1.5 text-violet-400"></i> Videos
+                </button>
+                <button onclick="setCategory('favorites')" id="tab-favorites" class="category-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white hover:bg-slate-800/60 shrink-0">
+                    <i class="fa-solid fa-heart mr-1.5 text-rose-400"></i> Favorites
+                </button>
+                <button onclick="setCategory('trash')" id="tab-trash" class="category-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white hover:bg-slate-800/60 shrink-0">
+                    <i class="fa-solid fa-trash-can mr-1.5 text-slate-400"></i> Trash
+                </button>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <div class="relative flex-1 sm:w-64">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+                    <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search photos &amp; videos..." class="w-full bg-slate-900/80 border border-slate-700/80 rounded-xl pl-9 pr-4 py-2 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-sky-500 transition-colors">
+                </div>
+                <div class="flex bg-slate-900/80 border border-slate-800 rounded-xl p-1">
+                    <button onclick="setViewMode('grid')" id="btn-grid" class="p-1.5 rounded-lg text-sky-400 bg-slate-800"><i class="fa-solid fa-border-all text-sm"></i></button>
+                    <button onclick="setViewMode('list')" id="btn-list" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-200"><i class="fa-solid fa-list text-sm"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropzone Area -->
+        <div id="dropZone" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)" onclick="triggerFileInput()" class="glass-panel border-2 border-dashed border-slate-700 hover:border-sky-500/50 rounded-2xl p-6 sm:p-8 text-center cursor-pointer transition-all">
+            <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center mx-auto mb-3 text-sky-400 animate-float">
+                <i class="fa-solid fa-cloud-arrow-up text-xl sm:text-2xl"></i>
+            </div>
+            <p class="text-sm font-semibold text-slate-200">Tap or Drag &amp; Drop Photos and Videos here</p>
+            <p class="text-xs text-slate-400 mt-1">Files are saved securely inside browser memory across refreshes</p>
+        </div>
+
+        <!-- Media Grid Display -->
+        <div id="galleryContainer" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 hidden"></div>
+
+        <!-- Empty State Container -->
+        <div id="emptyState" class="glass-panel rounded-2xl p-12 text-center space-y-3">
+            <div class="w-16 h-16 rounded-full bg-slate-800/80 flex items-center justify-center mx-auto text-slate-500">
+                <i class="fa-solid fa-folder-open text-2xl"></i>
+            </div>
+            <h4 class="text-base font-bold text-slate-300">No media found in this section</h4>
+            <p class="text-xs text-slate-400 max-w-md mx-auto">Upload files or choose a different category from the top bar.</p>
+        </div>
+
+    </main>
+
+    <!-- Footer Signature -->
+    <footer class="max-w-7xl mx-auto px-4 sm:px-8 py-6 text-center">
+        <div class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full dew-badge">
+            <i class="fa-solid fa-bolt text-amber-400 text-xs animate-bounce"></i>
+            <span class="text-xs font-bold text-slate-300">
+                Powered by <span class="brand-animated-title font-extrabold text-sm tracking-wider">DEW</span>
+            </span>
+        </div>
+    </footer>
+
+    <!-- Floating Mobile Add Button -->
+    <button onclick="triggerFileInput()" class="sm:hidden fixed right-5 bottom-6 w-14 h-14 rounded-full gradient-btn text-white flex items-center justify-center shadow-2xl shadow-sky-500/50 z-30 active:scale-95">
+        <i class="fa-solid fa-plus text-xl"></i>
+    </button>
+
+    <!-- Media Lightbox Viewer -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex flex-col justify-between p-4 sm:p-6 transition-opacity">
+        <div class="flex items-center justify-between text-white z-10">
+            <div class="flex items-center space-x-3 truncate">
+                <i id="lightboxIcon" class="fa-solid fa-image text-sky-400 text-lg"></i>
+                <div class="truncate">
+                    <p id="lightboxTitle" class="text-sm font-bold truncate">File Name</p>
+                    <p id="lightboxMeta" class="text-[11px] text-slate-400">0 MB • Uploaded</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                <button id="lightboxFavBtn" onclick="toggleFavoriteCurrent()" class="w-9 h-9 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-rose-400 flex items-center justify-center">
+                    <i class="fa-solid fa-heart"></i>
+                </button>
+                <button id="lightboxDownloadBtn" onclick="downloadCurrentMedia()" class="w-9 h-9 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-sky-400 flex items-center justify-center">
+                    <i class="fa-solid fa-download"></i>
+                </button>
+                <button onclick="closeLightbox()" class="w-9 h-9 rounded-full bg-slate-800/80 hover:bg-rose-600/80 text-slate-300 hover:text-white flex items-center justify-center">
+                    <i class="fa-solid fa-xmark text-base"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="flex-1 flex items-center justify-center my-4 overflow-hidden relative">
+            <img id="lightboxImg" class="max-h-full max-w-full object-contain rounded-lg hidden shadow-2xl">
+            <video id="lightboxVideo" controls="" class="max-h-full max-w-full rounded-lg hidden shadow-2xl"></video>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-slate-400 border-t border-slate-800/80 pt-3">
+            <span id="lightboxCounter">Item 1 of 1</span>
+            <div class="flex space-x-2">
+                <button onclick="prevMedia()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 flex items-center space-x-1">
+                    <i class="fa-solid fa-chevron-left"></i> <span>Prev</span>
+                </button>
+                <button onclick="nextMedia()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 flex items-center space-x-1">
+                    <span>Next</span> <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- APK / PWA Direct Install Modal -->
+    <div id="apkBuilderModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-md rounded-2xl border border-slate-700 overflow-hidden shadow-2xl">
+            <div class="px-5 py-4 border-b border-slate-800 flex justify-between items-center bg-slate-900/80">
+                <h3 class="font-bold text-sm text-white flex items-center space-x-2">
+                    <i class="fa-brands fa-android text-emerald-400 text-base"></i>
+                    <span>APK / Mobile App Instant Installation</span>
+                </h3>
+                <button onclick="closeAPKBuilderModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-5 space-y-4 text-xs sm:text-sm text-slate-300">
+                <div class="flex items-center space-x-3 bg-slate-900 p-3 rounded-xl border border-emerald-500/30">
+                    <img id="apkPreviewPhoto" src="https://cdn-icons-png.flaticon.com/512/4149/4149678.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/4149/4149678.png'" class="w-12 h-12 rounded-xl object-cover border border-emerald-400">
+                    <div>
+                        <p class="font-bold text-white text-xs">DEVINDA EXTRA SPACE APK</p>
+                        <p class="text-[10px] text-slate-400">Launcher Icon: Custom Portrait Image Active</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 space-y-2">
+                    <p class="font-bold text-emerald-400 flex items-center"><i class="fa-solid fa-bolt mr-2 text-amber-400"></i> Option 1: Direct Home Screen App (PWA):</p>
+                    <p class="text-xs text-slate-300">
+                        උඩ ඇති <b>"Install App"</b> බටන් එක Touch කරන්න. නැතහොත් Android Chrome හි <b>Menu (⋮) &gt; "Add to Home Screen"</b> තෝරන්න.
+                    </p>
+                    <button onclick="installDirectToHomeScreen()" class="w-full mt-2 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Add Directly To Home Screen Now</span>
+                    </button>
+                </div>
+
+                <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 space-y-2">
+                    <p class="font-bold text-sky-400 flex items-center"><i class="fa-brands fa-android mr-2 text-emerald-400"></i> Option 2: Download Ready APK Project ZIP:</p>
+                    <p class="text-xs text-slate-300">
+                        ඔබගේ App Icon ඡායාරූපය සහ Manifest ෆයිල් අඩංගු Android Project Package එක ZIP එකක් ලෙස Download කරගන්න.
+                    </p>
+                    <button onclick="downloadAPKProjectBundle()" class="w-full mt-2 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-sky-500/40 text-sky-300 font-bold text-xs flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-file-zipper"></i>
+                        <span>Download APK Converter ZIP Package</span>
+                    </button>
+                </div>
+            </div>
+            <div class="px-5 py-3 border-t border-slate-800 bg-slate-900/80 flex items-center justify-end">
+                <button onclick="closeAPKBuilderModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-white">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script Logic -->
+    <script>
+        let customAppIconUrl = localStorage.getItem('devinda_app_icon') || '1000010730.png';
+        let deferredPrompt = null;
+
+        function updateAppIconUI(dataUrl) {
+            customAppIconUrl = dataUrl;
+            localStorage.setItem('devinda_app_icon', dataUrl);
+            
+            document.getElementById('headerAppIconImg').src = dataUrl;
+            document.getElementById('bannerIconPreview').src = dataUrl;
+            document.getElementById('apkPreviewPhoto').src = dataUrl;
+            document.getElementById('appleTouchIcon').href = dataUrl;
+            document.getElementById('faviconIcon').href = dataUrl;
+
+            generateManifest();
+        }
+
+        function triggerAppIconUpload() {
+            document.getElementById('appIconFileInput').click();
+        }
+
+        function handleAppIconUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                updateAppIconUI(e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function generateManifest() {
+            const manifestData = {
+                "name": "DEVINDA EXTRA SPACE 1TB",
+                "short_name": "Devinda Space",
+                "description": "Personal 1TB Storage Vault Powered by DEW",
+                "start_url": "./",
+                "display": "standalone",
+                "background_color": "#090d16",
+                "theme_color": "#090d16",
+                "icons": [
+                    {
+                        "src": customAppIconUrl,
+                        "sizes": "192x192",
+                        "type": "image/png",
+                        "purpose": "any maskable"
+                    },
+                    {
+                        "src": customAppIconUrl,
+                        "sizes": "512x512",
+                        "type": "image/png",
+                        "purpose": "any maskable"
+                    }
+                ]
+            };
+            const stringManifest = JSON.stringify(manifestData);
+            const blob = new Blob([stringManifest], {type: 'application/json'});
+            const manifestURL = URL.createObjectURL(blob);
+            document.getElementById('manifestPlaceholder').setAttribute('href', manifestURL);
+        }
+
+        // Listen for Chrome/Android PWA Install prompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+        });
+
+        function installDirectToHomeScreen() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('App Installed');
+                    }
+                    deferredPrompt = null;
+                });
+            } else {
+                openAPKBuilderModal();
+            }
+        }
+
+        function openAPKBuilderModal() { document.getElementById('apkBuilderModal').classList.remove('hidden'); }
+        function closeAPKBuilderModal() { document.getElementById('apkBuilderModal').classList.add('hidden'); }
+
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            const swCode = `
+                const CACHE_NAME = 'devinda-space-v5';
+                self.addEventListener('install', e => { e.waitUntil(self.skipWaiting()); });
+                self.addEventListener('activate', e => { e.waitUntil(self.clients.claim()); });
+                self.addEventListener('fetch', e => {
+                    e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+                });
+            `;
+            const blob = new Blob([swCode], { type: 'application/javascript' });
+            const swUrl = URL.createObjectURL(blob);
+            navigator.serviceWorker.register(swUrl).catch(err => console.log('SW Registration:', err));
+        }
+
+        // IndexedDB Persistence Engine
+        const DB_NAME = 'DevindaExtraSpaceDB';
+        const DB_VERSION = 1;
+        const STORE_NAME = 'media_files';
+        let db;
+
+        let mediaItems = [];
+        let currentCategory = 'all';
+        let currentViewMode = 'grid';
+        let activeSearchQuery = '';
+        let currentLightboxIndex = -1;
+
+        window.onload = function() {
+            updateAppIconUI(customAppIconUrl);
+            initIndexedDB().then(() => {
+                loadMediaFromDB();
+            });
+        };
+
+        function initIndexedDB() {
+            return new Promise((resolve) => {
+                const request = indexedDB.open(DB_NAME, DB_VERSION);
+                request.onerror = (e) => console.error('IndexedDB Error:', e);
+                request.onsuccess = (e) => {
+                    db = e.target.result;
+                    resolve();
+                };
+                request.onupgradeneeded = (e) => {
+                    const dbInstance = e.target.result;
+                    if (!dbInstance.objectStoreNames.contains(STORE_NAME)) {
+                        dbInstance.createObjectStore(STORE_NAME, { keyPath: 'id' });
+                    }
+                };
+            });
+        }
+
+        function saveItemToDB(item) {
+            return new Promise((resolve) => {
+                const tx = db.transaction([STORE_NAME], 'readwrite');
+                const store = tx.objectStore(STORE_NAME);
+                store.put(item);
+                tx.oncomplete = () => resolve();
+            });
+        }
+
+        function loadMediaFromDB() {
+            const tx = db.transaction([STORE_NAME], 'readonly');
+            const store = tx.objectStore(STORE_NAME);
+            const request = store.getAll();
+            request.onsuccess = () => {
+                mediaItems = request.result || [];
+                renderGallery();
+                updateStorageMetrics();
+            };
+        }
+
+        function triggerFileInput() {
+            document.getElementById('mediaFileInput').click();
+        }
+
+        function handleFileUpload(event) {
+            const files = event.target.files;
+            if (!files || files.length === 0) return;
+
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const newItem = {
+                        id: 'media_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+                        name: file.name,
+                        type: file.type.startsWith('image/') ? 'photo' : 'video',
+                        mimeType: file.type,
+                        size: file.size,
+                        dataUrl: e.target.result,
+                        dateUploaded: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+                        isFavorite: false,
+                        isTrash: false
+                    };
+                    mediaItems.unshift(newItem);
+                    saveItemToDB(newItem).then(() => {
+                        renderGallery();
+                        updateStorageMetrics();
+                    });
+                };
+                reader.readAsDataURL(file);
+            });
+
+            event.target.value = '';
+        }
+
+        function handleDragOver(e) { e.preventDefault(); e.currentTarget.classList.add('border-sky-500'); }
+        function handleDragLeave(e) { e.preventDefault(); e.currentTarget.classList.remove('border-sky-500'); }
+        function handleDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('border-sky-500');
+            if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                handleFileUpload({ target: { files: e.dataTransfer.files } });
+            }
+        }
+
+        function updateStorageMetrics() {
+            const TOTAL_CAPACITY_BYTES = 1024 * 1024 * 1024 * 1024; // 1 TB Capacity
+            
+            let photoBytes = 0;
+            let videoBytes = 0;
+            let photoCount = 0;
+            let videoCount = 0;
+
+            mediaItems.forEach(item => {
+                if (!item.isTrash) {
+                    if (item.type === 'photo') { photoBytes += item.size; photoCount++; }
+                    else if (item.type === 'video') { videoBytes += item.size; videoCount++; }
+                }
+            });
+
+            const totalUsedBytes = photoBytes + videoBytes;
+            const freeBytes = TOTAL_CAPACITY_BYTES - totalUsedBytes;
+            const usedPercent = ((totalUsedBytes / TOTAL_CAPACITY_BYTES) * 100).toFixed(4);
+
+            document.getElementById('storagePercentText').innerText = `${usedPercent}%`;
+            document.getElementById('photoUsageText').innerText = `${formatBytes(photoBytes)} (${photoCount})`;
+            document.getElementById('videoUsageText').innerText = `${formatBytes(videoBytes)} (${videoCount})`;
+            document.getElementById('freeSpaceText').innerText = `${(freeBytes / (1024*1024*1024)).toFixed(2)} GB`;
+            document.getElementById('totalCountText').innerText = `${photoCount + videoCount} items`;
+
+            const photoWidth = Math.max((photoBytes / TOTAL_CAPACITY_BYTES) * 100, photoCount > 0 ? 0.5 : 0);
+            const videoWidth = Math.max((videoBytes / TOTAL_CAPACITY_BYTES) * 100, videoCount > 0 ? 0.5 : 0);
+            
+            document.getElementById('photosBar').style.width = `${photoWidth}%`;
+            document.getElementById('videosBar').style.width = `${videoWidth}%`;
+        }
+
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 MB';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function setCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.category-tab').forEach(btn => {
+                btn.className = 'category-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-400 hover:text-white hover:bg-slate-800/60 shrink-0';
+            });
+            const activeTab = document.getElementById(`tab-${cat}`);
+            if (activeTab) {
+                activeTab.className = 'category-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-sky-500 text-white shadow-md shadow-sky-500/20 shrink-0';
+            }
+            renderGallery();
+        }
+
+        function setViewMode(mode) {
+            currentViewMode = mode;
+            document.getElementById('btn-grid').className = mode === 'grid' ? 'p-1.5 rounded-lg text-sky-400 bg-slate-800' : 'p-1.5 rounded-lg text-slate-400 hover:text-slate-200';
+            document.getElementById('btn-list').className = mode === 'list' ? 'p-1.5 rounded-lg text-sky-400 bg-slate-800' : 'p-1.5 rounded-lg text-slate-400 hover:text-slate-200';
+            renderGallery();
+        }
+
+        function handleSearch() {
+            activeSearchQuery = document.getElementById('searchInput').value.toLowerCase();
+            renderGallery();
+        }
+
+        function getFilteredItems() {
+            return mediaItems.filter(item => {
+                if (currentCategory === 'photos' && (item.type !== 'photo' || item.isTrash)) return false;
+                if (currentCategory === 'videos' && (item.type !== 'video' || item.isTrash)) return false;
+                if (currentCategory === 'favorites' && (!item.isFavorite || item.isTrash)) return false;
+                if (currentCategory === 'trash' && !item.isTrash) return false;
+                if (currentCategory === 'all' && item.isTrash) return false;
+
+                if (activeSearchQuery && !item.name.toLowerCase().includes(activeSearchQuery)) return false;
+                return true;
+            });
+        }
+
+        function renderGallery() {
+            const container = document.getElementById('galleryContainer');
+            const emptyState = document.getElementById('emptyState');
+            const items = getFilteredItems();
+
+            container.innerHTML = '';
+
+            if (items.length === 0) {
+                emptyState.classList.remove('hidden');
+                container.classList.add('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            container.classList.remove('hidden');
+
+            if (currentViewMode === 'grid') {
+                container.className = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4";
+                items.forEach((item, idx) => {
+                    const card = document.createElement('div');
+                    card.className = "glass-card rounded-2xl overflow-hidden group relative flex flex-col cursor-pointer border border-slate-800/80";
+                    card.onclick = () => openLightbox(idx);
+
+                    const mediaPreview = item.type === 'photo' 
+                        ? `<img src="${item.dataUrl}" class="w-full h-36 sm:h-44 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">`
+                        : `<div class="w-full h-36 sm:h-44 bg-slate-900 flex items-center justify-center relative overflow-hidden">
+                             <video src="${item.dataUrl}#t=0.5" class="w-full h-full object-cover opacity-80" preload="metadata"></video>
+                             <div class="absolute w-10 h-10 rounded-full bg-slate-900/80 border border-slate-700 flex items-center justify-center text-violet-400">
+                                 <i class="fa-solid fa-play text-xs ml-0.5"></i>
+                             </div>
+                           </div>`;
+
+                    card.innerHTML = `
+                        ${mediaPreview}
+                        <div class="p-3 bg-slate-950/60 backdrop-blur-md flex flex-col justify-between flex-1">
+                            <p class="text-xs font-semibold text-slate-200 truncate" title="${item.name}">${item.name}</p>
+                            <div class="flex items-center justify-between text-[10px] text-slate-400 mt-1">
+                                <span>${formatBytes(item.size)}</span>
+                                <div class="flex items-center space-x-1" onclick="event.stopPropagation()">
+                                    <button onclick="toggleFavorite('${item.id}')" class="${item.isFavorite ? 'text-rose-500' : 'text-slate-500 hover:text-rose-400'} p-1">
+                                        <i class="fa-solid fa-heart"></i>
+                                    </button>
+                                    <button onclick="toggleTrash('${item.id}')" class="text-slate-500 hover:text-slate-300 p-1">
+                                        <i class="fa-solid ${item.isTrash ? 'fa-rotate-left' : 'fa-trash-can'}"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            } else {
+                container.className = "flex flex-col space-y-2";
+                items.forEach((item, idx) => {
+                    const row = document.createElement('div');
+                    row.className = "glass-card p-3 rounded-xl flex items-center justify-between cursor-pointer border border-slate-800/80";
+                    row.onclick = () => openLightbox(idx);
+
+                    const icon = item.type === 'photo' 
+                        ? '<i class="fa-solid fa-image text-sky-400 text-base"></i>'
+                        : '<i class="fa-solid fa-video text-violet-400 text-base"></i>';
+
+                    row.innerHTML = `
+                        <div class="flex items-center space-x-3 truncate">
+                            <div class="w-9 h-9 rounded-lg bg-slate-900 flex items-center justify-center shrink-0">
+                                ${icon}
+                            </div>
+                            <div class="truncate">
+                                <p class="text-xs font-semibold text-slate-200 truncate">${item.name}</p>
+                                <p class="text-[10px] text-slate-400">${formatBytes(item.size)} • ${item.dateUploaded}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2" onclick="event.stopPropagation()">
+                            <button onclick="toggleFavorite('${item.id}')" class="${item.isFavorite ? 'text-rose-500' : 'text-slate-500 hover:text-rose-400'} p-1.5">
+                                <i class="fa-solid fa-heart"></i>
+                            </button>
+                            <button onclick="toggleTrash('${item.id}')" class="text-slate-500 hover:text-slate-300 p-1.5">
+                                <i class="fa-solid ${item.isTrash ? 'fa-rotate-left' : 'fa-trash-can'}"></i>
+                            </button>
+                        </div>
+                    `;
+                    container.appendChild(row);
+                });
+            }
+        }
+
+        function toggleFavorite(id) {
+            const item = mediaItems.find(i => i.id === id);
+            if (item) {
+                item.isFavorite = !item.isFavorite;
+                saveItemToDB(item).then(() => renderGallery());
+            }
+        }
+
+        function toggleTrash(id) {
+            const item = mediaItems.find(i => i.id === id);
+            if (item) {
+                item.isTrash = !item.isTrash;
+                saveItemToDB(item).then(() => {
+                    renderGallery();
+                    updateStorageMetrics();
+                });
+            }
+        }
+
+        function openLightbox(index) {
+            const items = getFilteredItems();
+            if (index < 0 || index >= items.length) return;
+
+            currentLightboxIndex = index;
+            const item = items[index];
+
+            const modal = document.getElementById('lightboxModal');
+            const img = document.getElementById('lightboxImg');
+            const video = document.getElementById('lightboxVideo');
+
+            document.getElementById('lightboxTitle').innerText = item.name;
+            document.getElementById('lightboxMeta').innerText = `${formatBytes(item.size)} • ${item.dateUploaded}`;
+            document.getElementById('lightboxCounter').innerText = `Item ${index + 1} of ${items.length}`;
+
+            const icon = document.getElementById('lightboxIcon');
+            icon.className = item.type === 'photo' ? 'fa-solid fa-image text-sky-400 text-lg' : 'fa-solid fa-video text-violet-400 text-lg';
+
+            const favBtn = document.getElementById('lightboxFavBtn');
+            favBtn.className = item.isFavorite 
+                ? 'w-9 h-9 rounded-full bg-rose-500/20 text-rose-500 flex items-center justify-center'
+                : 'w-9 h-9 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-rose-400 flex items-center justify-center';
+
+            if (item.type === 'photo') {
+                video.pause();
+                video.classList.add('hidden');
+                img.src = item.dataUrl;
+                img.classList.remove('hidden');
+            } else {
+                img.classList.add('hidden');
+                video.src = item.dataUrl;
+                video.classList.remove('hidden');
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            const modal = document.getElementById('lightboxModal');
+            const video = document.getElementById('lightboxVideo');
+            video.pause();
+            modal.classList.add('hidden');
+        }
+
+        function prevMedia() {
+            const items = getFilteredItems();
+            if (currentLightboxIndex > 0) openLightbox(currentLightboxIndex - 1);
+            else openLightbox(items.length - 1);
+        }
+
+        function nextMedia() {
+            const items = getFilteredItems();
+            if (currentLightboxIndex < items.length - 1) openLightbox(currentLightboxIndex + 1);
+            else openLightbox(0);
+        }
+
+        function toggleFavoriteCurrent() {
+            const items = getFilteredItems();
+            if (currentLightboxIndex >= 0 && currentLightboxIndex < items.length) {
+                toggleFavorite(items[currentLightboxIndex].id);
+                openLightbox(currentLightboxIndex);
+            }
+        }
+
+        function downloadCurrentMedia() {
+            const items = getFilteredItems();
+            if (currentLightboxIndex >= 0 && currentLightboxIndex < items.length) {
+                const item = items[currentLightboxIndex];
+                const a = document.createElement('a');
+                a.href = item.dataUrl;
+                a.download = item.name;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+        }
+
+        // Export ZIP package
+        function downloadAPKProjectBundle() {
+            const zip = new JSZip();
+            const currentHTML = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            
+            zip.file("index.html", currentHTML);
+            
+            const manifestData = {
+                "name": "DEVINDA EXTRA SPACE 1TB",
+                "short_name": "Devinda Space",
+                "start_url": "./index.html",
+                "display": "standalone",
+                "background_color": "#090d16",
+                "theme_color": "#090d16",
+                "icons": [
+                    { "src": "icon.png", "sizes": "512x512", "type": "image/png" }
+                ]
+            };
+            zip.file("manifest.json", JSON.stringify(manifestData, null, 2));
+
+            const swCode = `self.addEventListener('fetch', function(e) {});`;
+            zip.file("sw.js", swCode);
+
+            const guideText = `DEVINDA EXTRA SPACE - APK CONVERSION GUIDE:
+1. Extract this ZIP file on your computer or phone.
+2. Visit PWABuilder (https://www.pwabuilder.com) or WebIntoApp (https://www.webintoapp.com).
+3. Upload the index.html and manifest.json files.
+4. Click 'Generate APK' or 'Download Android App'.
+5. Install the generated .apk file on your Android phone with your portrait image as the app icon!`;
+            zip.file("APK_BUILD_INSTRUCTIONS.txt", guideText);
+
+            zip.generateAsync({ type: "blob" }).then(function(content) {
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(content);
+                a.download = "DEVINDA_EXTRA_SPACE_APK_Project.zip";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            });
+        }
+    </script>
+
+
+      <script>
+        (function() {
+          // The root element's background fills the whole page. As in CSS,
+          // the body's background is used when the root element has none.
+          function getPageBackgroundColor() {
+            var docStyle = window.getComputedStyle(document.documentElement);
+            var color = docStyle.backgroundColor;
+            if ((color === 'rgba(0, 0, 0, 0)' || color === 'transparent') &&
+                docStyle.backgroundImage === 'none' && document.body) {
+              color = window.getComputedStyle(document.body).backgroundColor;
+            }
+            return color || '';
+          }
+
+          var lastReportedColor = '';
+          function reportBackgroundColor() {
+            try {
+              var color = getPageBackgroundColor();
+              if (color === lastReportedColor) return;
+              lastReportedColor = color;
+              window.parent.postMessage({
+                type: 'ATARI_CODE_EMBED_BACKGROUND_COLOR',
+                backgroundColor: color
+              }, '*');
+            } catch (e) {}
+          }
+
+          // The page background usually changes through an attribute on html
+          // or body (for example a theme class), a style sheet in head, or the
+          // system color scheme.
+          if (typeof MutationObserver !== 'undefined') {
+            var observer = new MutationObserver(reportBackgroundColor);
+            observer.observe(document.documentElement, {attributes: true});
+            if (document.body) {
+              observer.observe(document.body, {attributes: true});
+            }
+            if (document.head) {
+              observer.observe(document.head, {
+                attributes: true,
+                childList: true,
+                subtree: true,
+                characterData: true
+              });
+            }
+          }
+          var colorSchemeQuery =
+              window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+          if (colorSchemeQuery && colorSchemeQuery.addEventListener) {
+            colorSchemeQuery.addEventListener('change', reportBackgroundColor);
+          }
+          window.addEventListener('load', reportBackgroundColor);
+          window.addEventListener('transitionend', reportBackgroundColor);
+          window.addEventListener('animationend', reportBackgroundColor);
+          reportBackgroundColor();
+        })();
+      </script>
+    </body></html>
